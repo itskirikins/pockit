@@ -37,8 +37,8 @@ import com.parse.ParseObject;
 public class HomeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
   
-	private EditText eText;
-	private Button btn;
+	EditText eText;
+	Button btn;
 	
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -86,22 +86,21 @@ public class HomeActivity extends FragmentActivity implements
 	        		
 	    eText = (EditText) findViewById(R.id.userText);
 	    btn = (Button) findViewById(R.id.sendButton);
-	        		
-	    btn.setOnClickListener(new OnClickListener() {
-	       public void OnClick(View v) {
-	         String str = eText.getText().toString();
+	
+	 btn.setOnClickListener(new View.OnClickListener() {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			 String str = eText.getText().toString();
 	         Toast msg = Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG);
 	    	 msg.show();
 	         msg.show();
-	       }
-
-		@Override
-		public void onClick(View arg0) {
-			// TODO Auto-generated method stub
-			
 		}
-	    });
-	}
+			
+		});
+}
+	
 
 	//when touch pockit he do the move
 	public boolean onTouchEvent(MotionEvent event) {
