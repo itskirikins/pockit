@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -15,6 +16,7 @@ import android.support.v4.app.NavUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View.OnClickListener;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -25,23 +27,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.Toast;
 
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
-=======
->>>>>>> fcbf4683f7d2520678a95d592cf215560a536144
 
 public class HomeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
   
-  private EditText edittext;
-  private Button btn;
-
-<<<<<<< HEAD
 	private EditText eText;
 	private Button btn;
 	
@@ -88,8 +83,9 @@ public class HomeActivity extends FragmentActivity implements
 	        		
 	        		ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
 	        		pockitImage.setImageDrawable(pockitAnimation);
-	    eText = (EditText) findViewById(R.id.edittext);
-	    btn = (Button) findViewById(R.id.button);
+	        		
+	    eText = (EditText) findViewById(R.id.userText);
+	    btn = (Button) findViewById(R.id.sendButton);
 	        		
 	    btn.setOnClickListener(new OnClickListener() {
 	       public void OnClick(View v) {
@@ -98,64 +94,15 @@ public class HomeActivity extends FragmentActivity implements
 	    	 msg.show();
 	         msg.show();
 	       }
+
+		@Override
+		public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			
+		}
 	    });
 	}
-	
-	
-	
-	
-=======
-  /**
-   * The serialization (saved instance state) Bundle key representing the
-   * current dropdown position.
-   */
-  private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
-  AnimationDrawable pockitAnimation;
-  
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_home);
-
-    // Set up the action bar to show a dropdown list.
-    final ActionBar actionBar = getActionBar();
-    actionBar.setDisplayShowTitleEnabled(false);
-    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-
-    // Set up the dropdown list navigation in the action bar.
-    actionBar.setListNavigationCallbacks(
-    // Specify a SpinnerAdapter to populate the dropdown list.
-        new ArrayAdapter<String>(getActionBarThemedContextCompat(),
-            android.R.layout.simple_list_item_1,
-            android.R.id.text1, new String[] {
-                getString(R.string.title_section1),
-                getString(R.string.title_section2),
-                getString(R.string.title_section3), }), this);
-    
-    //make pockit!
-          pockitAnimation = new AnimationDrawable();
-          pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic1), 500);
-              pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic2), 500);
-              pockitAnimation.setOneShot(false);
-              
-              ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
-              pockitImage.setImageDrawable(pockitAnimation);	        
-	}
-	
-  edittext = (EditText) findViewById(R.id.edittext);
-  btn = (Button) findViewById(R.id.button);
-
-  btn.setOnClickListener(new OnClickListener() {
-    public void onClick(View v) {
-      String str = edittext.getText().toString();
-      Toast msg = TOast.makeText(getBaseContext(),str,Toast.LENGTH_LONG);
-      msg.show();
-      msg.show();
-    }
-  }
-
->>>>>>> fcbf4683f7d2520678a95d592cf215560a536144
 	//when touch pockit he do the move
 	public boolean onTouchEvent(MotionEvent event) {
 		  if (event.getAction() == MotionEvent.ACTION_DOWN) {

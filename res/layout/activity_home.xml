@@ -39,7 +39,7 @@
                     android:layout_alignParentRight="true"/>
                 
                 <EditText
-                    android:id="@+id/autoCompleteTextView1"
+                    android:id="@+id/userText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
