@@ -18,7 +18,7 @@
                 android:id="@+id/image_view"
                 android:layout_width="320dip"
                 android:layout_height="320dip"
-                android:layout_marginTop="26dip"
+                android:layout_marginTop="40dip"
                 android:padding="10dip"
 				android:layout_centerInParent="true"
 				android:src="@drawable/pockit_jump"
