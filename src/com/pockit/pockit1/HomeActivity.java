@@ -1,6 +1,8 @@
 package com.pockit.pockit1;
 
 import android.annotation.TargetApi;
+
+
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.content.Context;
@@ -21,10 +23,21 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.Button;
+import android.widget.Toast;
+
+
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
 
 public class HomeActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener {
 
+	private EditText eText;
+	private Button btn;
+	
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
 	 * current dropdown position.
@@ -37,7 +50,14 @@ public class HomeActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
+		
+		//initialize parse
+		Parse.initialize(this, "r4HCxBx0NcnupAJFul1X82LyTc7f1EnSnUVmAB04", "nEUrTlM2sgwxuZe1QdmSa2ztvFwLb8dapITve2yp");
 
+		ParseObject testObject = new ParseObject("TestObject");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
+		
 		// Set up the action bar to show a dropdown list.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
@@ -60,8 +80,22 @@ public class HomeActivity extends FragmentActivity implements
 	        		pockitAnimation.setOneShot(false);
 	        		
 	        		ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
-	        		pockitImage.setImageDrawable(pockitAnimation);	        
+	        		pockitImage.setImageDrawable(pockitAnimation);
+	    eText = (EditText) findViewById(R.id.edittext);
+	    btn = (Button) findViewById(R.id.button);
+	        		
+	    btn.setOnClickListener(new OnClickListener() {
+	       public void OnClick(View v) {
+	         String str = eText.getText().toString();
+	         Toast msg = Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG);
+	    	 msg.show();
+	         msg.show();
+	       }
+	    });
 	}
+	
+	
+	
 	
 	//when touch pockit he do the move
 	public boolean onTouchEvent(MotionEvent event) {
