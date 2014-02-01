@@ -52,22 +52,35 @@ public class HomeActivity extends FragmentActivity implements
 								getString(R.string.title_section3), }), this);
 		
 		//make pockit!
-		ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
-		  pockitImage.setVisibility(0);
-		  pockitImage.setBackgroundResource(R.drawable.pockit_jump);
-	        pockitAnimation = (AnimationDrawable) pockitImage.getBackground();
-
+		/*ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
+		  pockitImage.setVisibility(View.VISIBLE);
+		  pockitImage.setImageResource(R.drawable.pockit_jump);
+	        pockitAnimation = (AnimationDrawable) pockitImage.getI(); */
+	        
+	        pockitAnimation = new AnimationDrawable();
+	        pockitAnimation.addFrame(getResources().getDrawable
+	        		(R.drawable.pic1), 500);
+	        		pockitAnimation.addFrame(getResources().getDrawable
+	        		(R.drawable.pic2), 500);
+	        		pockitAnimation.setOneShot(false);
+	        		
+	        		ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
+	        		pockitImage.setImageDrawable(pockitAnimation);
+	        		//pockitImage.invalidate();
+	        
 	}
+		
+
 	
 	
 	//when touch pockit he do the move
-	public boolean onTouchEvent(MotionEvent event) {
+	/* public boolean onTouchEvent(MotionEvent event) {
 		  if (event.getAction() == MotionEvent.ACTION_DOWN) {
 		    pockitAnimation.start();
 		    return true;
 		  }
 		  return super.onTouchEvent(event);
-	}
+	} */
 
 	/**
 	 * Backward-compatible version of {@link ActionBar#getThemedContext()} that
