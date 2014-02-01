@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -53,35 +54,23 @@ public class HomeActivity extends FragmentActivity implements
 								getString(R.string.title_section3), }), this);
 		
 		//make pockit!
-		/*ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
-		  pockitImage.setVisibility(View.VISIBLE);
-		  pockitImage.setImageResource(R.drawable.pockit_jump);
-	        pockitAnimation = (AnimationDrawable) pockitImage.getI(); */
-	        
 	        pockitAnimation = new AnimationDrawable();
-	        pockitAnimation.addFrame(getResources().getDrawable
-	        		(R.drawable.pic1), 500);
-	        		pockitAnimation.addFrame(getResources().getDrawable
-	        		(R.drawable.pic2), 500);
+	        pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic1), 500);
+	        		pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic2), 500);
 	        		pockitAnimation.setOneShot(false);
 	        		
 	        		ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
-	        		pockitImage.setImageDrawable(pockitAnimation);
-	        		//pockitImage.invalidate();
-	        
+	        		pockitImage.setImageDrawable(pockitAnimation);	        
 	}
-		
-
-	
 	
 	//when touch pockit he do the move
-	/* public boolean onTouchEvent(MotionEvent event) {
+	public boolean onTouchEvent(MotionEvent event) {
 		  if (event.getAction() == MotionEvent.ACTION_DOWN) {
 		    pockitAnimation.start();
 		    return true;
 		  }
 		  return super.onTouchEvent(event);
-	} */
+	}
 
 	/**
 	 * Backward-compatible version of {@link ActionBar#getThemedContext()} that
@@ -119,6 +108,21 @@ public class HomeActivity extends FragmentActivity implements
 		MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.home, menu);
 	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_new:
+	            Intent intent = new Intent(this, NewEventActivity.class);
+	            startActivity(intent);
+	            return true;
+	        //case R.id.action_settings:
+	          //  openSettings();
+	           // return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
 
 	@Override
