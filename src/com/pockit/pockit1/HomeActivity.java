@@ -1,7 +1,7 @@
 package com.pockit.pockit1;
 
 import android.annotation.TargetApi;
-
+import com.google.code.chatterbotapi.*
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -40,6 +40,11 @@ public class HomeActivity extends FragmentActivity implements
 	EditText eText;
 	Button btn;
 	
+  // Chatterbot stuff
+  ChatterBotFactory factory = new ChatterBotFactory();
+  ChatterBot pkit = factory.create(ChatterBotType.PANDORABOTS, "b0dafd24ee35a477");
+  ChatterBotSession pkitsession = pkit.createSession();
+
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
 	 * current dropdown position.
@@ -93,7 +98,8 @@ public class HomeActivity extends FragmentActivity implements
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			 String str = eText.getText().toString();
-	         Toast msg = Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG);
+       String resp = pkitsession.think(str);
+	         Toast msg = Toast.makeText(getBaseContext(), resp, Toast.LENGTH_LONG);
 	    	 msg.show();
 	         msg.show();
 		}
