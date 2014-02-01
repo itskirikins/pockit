@@ -1,0 +1,59 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity"
+    tools:ignore="MergeRootFrame" 
+    android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" 
+            android:background="@drawable/stripe"
+            >
+
+            <ImageView
+                android:id="@+id/image_view"
+                android:layout_width="320dip"
+                android:layout_height="320dip"
+                android:layout_marginTop="26dip"
+                android:padding="10dip"
+				android:layout_centerInParent="true"
+                android:visibility="invisible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/sendButton"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/send_button" 
+                    android:typeface="monospace" 
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"/>
+                
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:fadeScrollbars="true"
+                    android:hint="@string/question_hint"
+                    android:text="@string/question"
+                    android:typeface="monospace" 
+                    android:layout_alignParentBottom="true" 
+                    android:layout_toLeftOf="@id/sendButton">
+
+                    <requestFocus />
+                </AutoCompleteTextView>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+</FrameLayout>
