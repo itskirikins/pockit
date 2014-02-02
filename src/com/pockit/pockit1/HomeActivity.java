@@ -1,7 +1,7 @@
 package com.pockit.pockit1;
 
 import android.annotation.TargetApi;
-import com.google.code.chatterbotapi.*
+//import com.google.code.chatterbotapi.*
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -41,9 +41,9 @@ public class HomeActivity extends FragmentActivity implements
 	Button btn;
 	
   // Chatterbot stuff
-  ChatterBotFactory factory = new ChatterBotFactory();
+  /*ChatterBotFactory factory = new ChatterBotFactory();
   ChatterBot pkit = factory.create(ChatterBotType.PANDORABOTS, "b0dafd24ee35a477");
-  ChatterBotSession pkitsession = pkit.createSession();
+  ChatterBotSession pkitsession = pkit.createSession(); */
 
 	/**
 	 * The serialization (saved instance state) Bundle key representing the
@@ -52,7 +52,9 @@ public class HomeActivity extends FragmentActivity implements
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
 	AnimationDrawable pockitAnimation;
-	
+	 AnimationDrawable pockitAnim;
+	 ImageView pockitImage;
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -85,15 +87,14 @@ public class HomeActivity extends FragmentActivity implements
 	        pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic1), 500);
 	        		pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic2), 500);
 	        		pockitAnimation.setOneShot(false);
-	        		
+	      
 	        		ImageView pockitImage = (ImageView) findViewById(R.id.image_view);
 	        		pockitImage.setImageDrawable(pockitAnimation);
 	        		
 	    eText = (EditText) findViewById(R.id.userText);
 	    btn = (Button) findViewById(R.id.sendButton);
 	
-	 btn.setOnClickListener(new View.OnClickListener() {
-
+/*	 btn.setOnClickListener(new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
@@ -104,16 +105,53 @@ public class HomeActivity extends FragmentActivity implements
 	         msg.show();
 		}
 			
-		});
-}
+		}); */
+} 
 	
 
 	//when touch pockit he do the move
 	public boolean onTouchEvent(MotionEvent event) {
-		  if (event.getAction() == MotionEvent.ACTION_DOWN) {
-		    pockitAnimation.start();
-		    return true;
+		 pockitAnim = new AnimationDrawable();
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump1), 100);
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump2), 100);
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump3), 100);
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump4), 100);
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump1), 100);
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump2), 100);
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump3), 100);
+	        		pockitAnim.addFrame(getResources().getDrawable(R.drawable.blushyflailyjump4), 100);
+	        		pockitAnim.setOneShot(true);
+	        		
+	        		pockitImage = (ImageView) findViewById(R.id.image_view);
+	        		pockitImage.setImageDrawable(pockitAnim);
+	        		int temp = 0;
+	        		if(event.getAction() == MotionEvent.ACTION_DOWN)
+	        		{
+	        			temp = event.getAction();
+	        		}
+	        		
+		  if (temp == MotionEvent.ACTION_DOWN && event.getAction() == MotionEvent.ACTION_UP) {			  		   
+			  		pockitAnim.start();
+	        		pockitImage.setImageDrawable(pockitAnimation);
+				  	pockitAnimation.start();
+
+			  		return true;
 		  }
+		  if(event.getAction() == MotionEvent.ACTION_UP) {
+        		pockitImage.setImageDrawable(pockitAnimation);
+			  	pockitAnimation.start();
+			  	return true;
+		  }
+		  
+	       /* pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic1), 500);
+	        		pockitAnimation.addFrame(getResources().getDrawable(R.drawable.pic2), 500);
+	        		pockitAnimation.setOneShot(false);
+	        		
+	        		ImageView pockitImag = (ImageView) findViewById(R.id.image_view);
+	        		pockitImag.setImageDrawable(pockitAnimation);
+		    
+		    pockitAnimation.start(); */
+		    
 		  return super.onTouchEvent(event);
 	}
 
